@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 fun agniAlert(){
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(text = "Agani Alert", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Text(text = " Agani Alert", fontSize = 24.sp, fontWeight = FontWeight.Bold)
 
         Spacer(modifier = Modifier.fillMaxHeight(0.05f))
 
@@ -52,18 +52,29 @@ fun agniAlert(){
             .fillMaxWidth()) {
             MapScreen()
         }
+
+        Row (modifier = Modifier.fillMaxSize()){
+            reportAlert()
+        }
     }
 
 }
 
 @Composable
 fun MapScreen() {
-    val atasehir = LatLng(40.9971, 29.1007)
+    val kathmanduUniversity = LatLng(27.61930904485903, 85.53867363700307)
+
+    
     val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(atasehir, 15f)
+        position = CameraPosition.fromLatLngZoom(kathmanduUniversity, 15f)
     }
     GoogleMap(
         modifier = Modifier.fillMaxSize(),
         cameraPositionState = cameraPositionState
     )
+}
+
+@Composable
+fun reportAlert(){
+    
 }
