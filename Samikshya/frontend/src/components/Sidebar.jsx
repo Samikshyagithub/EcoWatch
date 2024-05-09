@@ -35,6 +35,12 @@ const Sidebar = () => {
       link: '/suspects',
       icon: <BiUserVoice size={28} />,
     },
+    {
+      id: 3,
+      name: 'Firephotos',
+      link: '/Firesuspect',
+      icon: <BiUserVoice size={28} />,
+    },
   ]
   return (
     <>

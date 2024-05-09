@@ -1,13 +1,19 @@
-import React from 'react';
-import ImageDisplay from '../components/fire'; // Adjust the path to the ImageDisplay component
-import House from "../assets/House.jpg";
+import Sidebar from '../components/Sidebar'
+import FileWindow from "../components/fileup";
 
-const FireDetection = () => {
+const Tool = () => {
   return (
-    <div className="App">
-      <ImageDisplay image={House} caption="Your caption here" />
-    </div>
-  );
+    <>
+      <div className="flex w-full h-screen">
+        <div className="w-[18%]">
+          <Sidebar />
+        </div>
+        <div className="w-[82%]">
+          <FileWindow></FileWindow>
+        </div>
+      </div>
+    </>
+  )
 }
 
-export default FireDetection;
+export default Tool

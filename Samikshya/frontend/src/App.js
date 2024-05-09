@@ -4,6 +4,8 @@ import Tool from "./pages/Tool";
 import Suspects from "./pages/Suspects";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import FireDetection from "./pages/Firedetection";
+import Firesuspect from "./pages/Firesuspect";
+
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/suspects",
     element: <Suspects />,
+  },
+  {
+    path: "/Firesuspect",
+    element: <Firesuspect />,
   },
 ]);
 
