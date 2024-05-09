@@ -1,0 +1,6 @@
+train: /mydrive/train
+val: /mytrain/val
+
+nc : 3
+
+names: ["human", "thrownwaste", "carryload"]
