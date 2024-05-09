@@ -74,4 +74,75 @@ def predict1(video_path):
     conn.commit()
     cur.close()
     
-    
+     while True:
+
+        
+        # Capture frame-by-fame
+        ret,frame = cap.read()
+        # if frame is read correctly ret is Tru
+        if not ret:
+            break
+        # Predict on image
+        # frame_count=frame_count+1
+
+        detect_params = model.predict(source=[frame], conf=0.30, save=False)
+        carry_flag=0
+
+        # Convert tensor array to numpy
+        DP = detect_params[0].cpu().numpy()
+        objects= np.array(detect_params[0].boxes.cls.cpu())
+   
+        obj_count=np.count_nonzero(objects ==1 )
+        font = cv2.FONT_HERSHEY_COMPLEX
+        now=datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        cv2.putText(frame,"KU,Dhulikhel",(0,50),font,1,(255, 0, 0),2)
+        cv2.putText(frame,current_time,(0,100),font,1,(0, 0, 255),2)
+        # time.sleep(1)
+
+        if len(DP) != 0:
+
+            
+            for i in range(len(detect_params[0])):
+                print(i)
+
+                boxes = detect_params[0].boxes
+                box = boxes[i]  # returns one box
+                clsID = box.cls.cpu().numpy()[0]
+            
+                conf = box.conf.cpu().numpy()[0]
+                bb = box.xyxy.cpu().numpy()[0]
+
+                cv2.rectangle(
+                    frame,
+                    (int(bb[0]), int(bb[1])),
+                    (int(bb[2]), int(bb[3])),
+                    detection_colors[int(clsID)],
+                    3,
+                )
+
+                if class_list[int(clsID)]=="carryload":
+                        carry_record.append(1)
+                       
+                        carry_flag=1
+                
+                if class_list[int(clsID)]=="thrownwaste":
+                        print("Start")
+                        print(carry_record)
+                        print(f"Counter:{counter} | Obj_count= {obj_count}")
+                        print("End")
+                        if carry_record[-2]==1 and counter<obj_count:
+                            counter=counter+1
+                            now = datetime.now()
+
+                            # format the time as a string
+                            file_name = now.strftime("%H%M%S")
+                            folder_name = now.strftime("%Y%m%d")
+                            if not os.path.isdir('suspects/'+folder_name):
+                                os.mkdir('suspects/'+folder_name)
+                            cv2.imwrite(f"suspects/{folder_name}/{file_name}.jpg",frame)
+                            send_email(f"suspects/{folder_name}/{file_name}.jpg")
+                            cur = conn.cursor()
+                            
+                            cur.execute(f"INSERT INTO sessions(filename) VALUES ('{folder_name}/{file_name}.jpg')")
+                            conn.commit()
