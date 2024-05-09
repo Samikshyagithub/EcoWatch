@@ -214,3 +214,57 @@ def predict1(video_path):
     
     
     
+app.route('/testurl/<path:input_url>',methods=['GET'])
+def video(input_url):
+    url= request.view_args['input_url']
+    print(url)
+    return Response(predict1(url),mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/firetest/<path:fire>',methods=['GET'],endpoint='fire_test_endpoint')
+def video(fire):
+    fire_url= request.view_args['fire']
+    print(fire_url)
+    return Response(predict2(fire_url),mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/suspects')
+def suspects():
+    try:
+        db_host = 'localhost'
+        db_name = 'flasksql'
+        db_user = 'postgres'
+        db_pass = 'abiral'
+        # connect to the PostgreSQL database
+        conn = psycopg2.connect(
+        host = db_host,
+        dbname = db_name,
+        user = db_user,
+        password = db_pass
+    )
+
+        # create a cursor object
+        cur = conn.cursor()
+
+        # execute the SELECT statement
+        cur.execute("SELECT * FROM sessions")
+
+        # fetch all the rows
+        rows = cur.fetchall()
+
+        # convert the rows to a list of dictionaries
+        results = []
+        for row in rows:
+            results.append({
+                "file_name": row[0],
+            })
+
+        # close the cursor and connection
+        
+        conn.close()
+
+        # return the results as JSON
+        return jsonify(results)
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+        return jsonify({"error": "Failed to fetch data"}), 500
