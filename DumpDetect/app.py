@@ -50,6 +50,7 @@ def send_email_with_attachment(sender_email, to_email, subject, message_text, fi
     message = create_message_with_attachment(sender_email, to_email, subject, message_text, file_path)
     service.users().messages().send(userId='me', body=message).execute()
 
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
@@ -108,7 +109,7 @@ def predict1(video_path):
     conn.commit()
     cur.close()
     
-     while True:
+    while True:
 
         
         # Capture frame-by-fame
@@ -179,3 +180,34 @@ def predict1(video_path):
                             
                             cur.execute(f"INSERT INTO sessions(filename) VALUES ('{folder_name}/{file_name}.jpg')")
                             conn.commit()
+                            mixer.init() 
+                            sound=mixer.Sound("alert.wav")
+                            sound.play()
+                            
+                            # frame_num=int(cap.get(cv2.CAP_PROP_POS_FRAMES))
+                            # frames.append(frame_num)
+
+                # Display class name and confidence
+                
+                cv2.putText(
+                    frame,
+                    class_list[int(clsID)] + " " + str(round(conf, 3)*100) + "%",
+                    (int(bb[0]), int(bb[1]) - 10),
+                    font,
+                    1,
+                    (255, 255, 255),
+                    2,
+                )
+                
+            if carry_flag==0:
+                carry_record.append(0)
+
+        #Return response
+        ret,buffer=cv2.imencode('.jpg',frame)
+        frame=buffer.tobytes()
+
+        yield(b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+    # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
