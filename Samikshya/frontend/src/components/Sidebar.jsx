@@ -18,10 +18,17 @@ const Sidebar = () => {
     },
     {
       id: 2,
-      name: 'Tool',
+      name: 'Garbage Detection',
       link: '/tool',
       icon: <TbTools size={26} />,
     },
+{
+      id: 2,
+      name: 'Fire Detection',
+      link: '/Firedetection',
+      icon: <TbTools size={26} />,
+    },
+
     {
       id: 3,
       name: 'Suspects',
