@@ -9,6 +9,9 @@ from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from pygame import mixer
 from flask import Flask, render_template, request, redirect, send_file, url_for, Response, jsonify
+from flask import Flask, request
+from flask_mail import Mail, Message
+import psycopg2
 
 app = Flask(__name__)
 
@@ -36,8 +39,8 @@ def predict1(video_path):
         b = random.randint(0, 255)
         detection_colors.append((r, b, g))
 
-    # # load a pretrained YOLOv8n model
-    # model = YOLO("mydrive/results/train/weights/best.pt","v8")
+    # load a pretrained YOLOv8n model
+    model = YOLO("mydrive/results/train/weights/best.pt","v8")
 
     # Vals to resize video frames | small frame optimise the run
     frame_wid = 640
@@ -46,3 +49,29 @@ def predict1(video_path):
     cap = cv2.VideoCapture(video_path)
     counter=0
     carry_record=[0,0,0]
+    
+    
+
+    db_host = 'localhost'
+    db_name = 'flasksql'
+    db_user = 'postgres'
+    db_pass = 'abiral'
+
+    conn = psycopg2.connect(
+        host = db_host,
+        dbname = db_name,
+        user = db_user,
+        password = db_pass
+    )
+
+    cur = conn.cursor()
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS sessions (
+            filename TEXT PRIMARY KEY NOT NULL
+        );
+    """)
+
+    conn.commit()
+    cur.close()
+    
+    
