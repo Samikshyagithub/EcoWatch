@@ -133,17 +133,17 @@ const Home = () => {
                 <div className="flex">
                 <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Firefighter})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%', paddingBottom: '20%' }}>
                  <div className="border border-gray-500 border-opacity-70 bg-gray-200 bg-opacity-50 rounded-lg p-4  text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Fire Brigade Alert</h1>
+                    <h1 className='text-2x0.5 font-bold text-black'>Fire Detection</h1>
                  </div>
                   </div>
                   <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${ambulance})`, backgroundSize: 'cover', backgroundPosition: 'center',height: '80%' }}>
                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Ambulance Alert</h1>
+                    <h1 className='text-2x0.5 font-bold text-black'>Trash Detection</h1>
                  </div>
                  </div>
                   < div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Garbage})`, backgroundSize: 'cover', backgroundPosition: 'center' , height: '80%'}}>
                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Garbage detection</h1>
+                    <h1 className='text-2x0.5 font-bold text-black'>Accident Reporting</h1>
                  </div>
                  </div>
                   <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${House})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%' }}>
@@ -157,17 +157,17 @@ const Home = () => {
   <div class="grid grid-cols-4 gap-4  text-black">
     <div class = "w-[250px] h-[200px]">
     <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
-  AgniAlert instantly notifies nearby fire brigades upon detecting a fire outbreak through our advanced detection system.
+  The machine learning model for fire detection can be run on CCTV footage by providing the video feed as input. The model will analyze the footage and generate alerts when it detects a fire.
 </p>
     </div>
     <div class = "w-[250px] h-[200px]">
     <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
-  Our Ambulance Alert system swiftly notifies nearby ambulance services upon detection of any accidents or emergencies.
+  The trash detection feature operates by analyzing video feeds from CCTV cameras. It identifies instances of unauthorized trash disposal and sends alerts to the appropriate authorities.
 </p>
     </div>
     <div class = "w-[250px] h-[200px]">
     <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
-  Our Garbage Detection System identifies individuals involved in illegal waste disposal, aiding in the mitigation of environmental pollution.Upon detection, offenders are recorded, and fines are levied, promoting accountability and discouraging further unlawful waste disposal practices.
+ Users can upload photos of accidents via the Agni Alert web or mobile application. The system processes these images and forwards the reports to the relevant emergency services and local authorities.
 </p>
     </div>
     <div class = "w-[250px] h-[200px]">

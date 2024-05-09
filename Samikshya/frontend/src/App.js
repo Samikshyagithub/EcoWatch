@@ -1,13 +1,23 @@
-import "./components/fileup";
-import Home from "./pages/Home";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import './components/fileup'
+import Home from './pages/Home'
+import Tool from './pages/Tool'
+import Suspects from './pages/Suspects'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
-]);
+  {
+    path: '/tool',
+    element: <Tool />,
+  },
+  {
+    path: '/suspects',
+    element: <Suspects />,
+  },
+])
 
 function App() {
   return (
@@ -16,7 +26,7 @@ function App() {
         <RouterProvider router={router} />
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
