@@ -12,9 +12,43 @@ from flask import Flask, render_template, request, redirect, send_file, url_for,
 from flask import Flask, request
 from flask_mail import Mail, Message
 import psycopg2
+import base64
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+
 
 app = Flask(__name__)
 
+def create_message_with_attachment(sender, to, subject, message_text, file_path):
+
+    message = MIMEMultipart()
+    message['to'] = to
+    message['from'] = sender
+    message['subject'] = subject
+
+    msg = MIMEText(message_text)
+    message.attach(msg)
+
+    with open(file_path, 'rb') as fp:
+        img_data = fp.read()
+
+    image = MIMEImage(img_data, name=os.path.basename(file_path))
+    message.attach(image)
+
+    raw_message = base64.urlsafe_b64encode(message.as_bytes())
+    raw_message = raw_message.decode()
+    return {'raw': raw_message}
+
+def send_email_with_attachment(sender_email, to_email, subject, message_text, file_path, credentials_path='credentials.json'):
+
+    creds = Credentials.from_authorized_user_file(credentials_path)
+    service = build('gmail', 'v1', credentials=creds)
+
+    message = create_message_with_attachment(sender_email, to_email, subject, message_text, file_path)
+    service.users().messages().send(userId='me', body=message).execute()
 
 @app.get("/")
 def read_root():
@@ -141,7 +175,6 @@ def predict1(video_path):
                             if not os.path.isdir('suspects/'+folder_name):
                                 os.mkdir('suspects/'+folder_name)
                             cv2.imwrite(f"suspects/{folder_name}/{file_name}.jpg",frame)
-                            send_email(f"suspects/{folder_name}/{file_name}.jpg")
                             cur = conn.cursor()
                             
                             cur.execute(f"INSERT INTO sessions(filename) VALUES ('{folder_name}/{file_name}.jpg')")
