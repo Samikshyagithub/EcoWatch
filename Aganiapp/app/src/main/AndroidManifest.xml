@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgniAlert"
         tools:targetApi="31">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBhK-tHIRdTvKbbZNEH9X32VDORYW3qIK8"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
