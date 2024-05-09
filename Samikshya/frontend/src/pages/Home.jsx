@@ -1,0 +1,188 @@
+import React, { PureComponent } from 'react';
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import Sidebar from '../components/Sidebar'
+import FileWindow from '../components/fileup'
+import { VscColorMode, VscOrganization } from 'react-icons/vsc'
+import { IoNotifications } from 'react-icons/io5'
+import { FaUserCircle, FaInfoCircle } from 'react-icons/fa'
+import { RiCloudFill } from 'react-icons/ri'
+import HeroImg from '../assets/Hero1.png'
+import HeroImg2 from '../assets/Hero2.png'
+import fohor from '../assets/fohor.jpg'
+import Dadelu from '../assets/Dadelu.jpg'
+import River from '../assets/River.png'
+import House from '../assets/House.jpg'
+import Firefighter from '../assets/Firefighter.png'
+import ambulance from '../assets/ambulance.jpg'
+import Garbage from '../assets/Garbage.png'
+
+const Home = () => {
+  const overviewArr = [
+    {
+      id: 1,
+      name: 'Cities covered',
+      number: '3',
+      color: '#fc7303',
+    },
+    {
+      id: 2,
+      name: 'Partners',
+      number: '16',
+      color: '#18cf00',
+    },
+    {
+      id: 3,
+      name: 'Footages',
+      number: '8',
+      color: '#0015d5',
+    },
+    {
+      id: 4,
+      name: 'Suspects found',
+      number: '104',
+      color: '#b60000',
+    },
+  ]
+  const data01 = [
+    { name: 'Group A', value: 400 },
+    { name: 'Group B', value: 300 },
+    { name: 'Group C', value: 300 },
+    { name: 'Group D', value: 200 },
+  ];
+  const data02 = [
+    { name: 'A1', value: 100 },
+    { name: 'A2', value: 300 },
+    { name: 'B1', value: 100 },
+    { name: 'B2', value: 80 },
+    { name: 'B3', value: 40 },
+    { name: 'B4', value: 30 },
+    { name: 'B5', value: 50 },
+    { name: 'C1', value: 100 },
+    { name: 'C2', value: 200 },
+    { name: 'D1', value: 150 },
+    { name: 'D2', value: 50 },
+  ];
+  return (
+    <>
+      <div className="flex w-full h-screen">
+        <div className="w-[18%]">
+          <Sidebar />
+        </div>
+        <div className="flex flex-col w-[82%]">
+          <div className="flex items-center justify-between py-2 px-7">
+            <div>
+              <form action="">
+                <input
+                  type="text"
+                  id="small-input"
+                  className="py-4 px-7 w-[20rem] h-11 outline-none rounded-full border-2 border-gray-300 bg-gray-300"
+                  placeholder={`🔍  Search here`}
+                ></input>
+              </form>
+            </div>
+            
+
+            <div>
+              <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
+                <IoNotifications size={22} />
+              </button>
+              <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
+                <VscColorMode size={22} />
+              </button>
+              <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
+                <FaUserCircle size={22} />
+              </button>
+            </div>
+          </div>
+          
+              <h1 className="px-4 mt-3 py-0 text-2xl font-semibold">
+                What are the problems?
+              </h1>
+              
+              < div className="flex flex-col p-4 mt-4 ml- bg-white shadow-xl rounded-3xl h-[45vh] w-[80vw]">
+                <div className="flex">
+                <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Dadelu})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%', paddingBottom: '20%' }}>
+                 <div className="flex items-start">
+                <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 ml-auto text-left">
+                   <h1 className='text-2x0.5 font-bold text-black'>Forest Fire</h1>
+  </div>
+</div>
+                  </div>
+                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${River})`, backgroundSize: 'cover', backgroundPosition: 'center',height: '80%' }}>
+                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 mt-0 text-left">
+                    <h1 className='text-2x0.5 font-bold text-black'>Water Pollution</h1>
+                 </div>
+                 </div>
+                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${fohor})`, backgroundSize: 'cover', backgroundPosition: 'center' , height: '80%'}}>
+                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 text-left">
+                    <h1 className='text-2x0.5 font-bold text-black'>Solid waste</h1>
+                 </div>
+                 </div>
+                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${House})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%' }}>
+                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 text-left">
+                    <h1 className='text-2x0.5 font-bold text-black'>Environmental Contamination</h1>
+                 </div>
+                 </div>
+                </div>
+
+             <h1 className="px-4 mt-3 py-0 text-2xl font-semibold">
+                What Agni Alert does?
+              </h1>
+              
+              < div className="flex flex-col p-1 mt-4 ml- bg-white shadow-xl rounded-3xl h-[40vh] w-[80vw]">
+                <div className="flex">
+                <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Firefighter})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%', paddingBottom: '20%' }}>
+                 <div className="border border-gray-500 border-opacity-70 bg-gray-200 bg-opacity-50 rounded-lg p-4  text-left">
+                    <h1 className='text-2x0.5 font-bold text-black'>Fire Brigade Alert</h1>
+                 </div>
+                  </div>
+                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${ambulance})`, backgroundSize: 'cover', backgroundPosition: 'center',height: '80%' }}>
+                   <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
+                    <h1 className='text-2x0.5 font-bold text-black'>Ambulance Alert</h1>
+                 </div>
+                 </div>
+                  < div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Garbage})`, backgroundSize: 'cover', backgroundPosition: 'center' , height: '80%'}}>
+                   <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
+                    <h1 className='text-2x0.5 font-bold text-black'>Garbage detection</h1>
+                 </div>
+                 </div>
+                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${House})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%' }}>
+                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
+                    <h1 className='text-2x0.5 font-bold text-black'>Fire detection</h1>
+                 </div>
+                 </div>
+                </div>
+              </div>
+              <div class="bg-white p-4">
+  <div class="grid grid-cols-4 gap-4  text-black">
+    <div class = "w-[250px] h-[200px]">
+    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
+  AgniAlert instantly notifies nearby fire brigades upon detecting a fire outbreak through our advanced detection system.
+</p>
+    </div>
+    <div class = "w-[250px] h-[200px]">
+    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
+  Our Ambulance Alert system swiftly notifies nearby ambulance services upon detection of any accidents or emergencies.
+</p>
+    </div>
+    <div class = "w-[250px] h-[200px]">
+    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
+  Our Garbage Detection System identifies individuals involved in illegal waste disposal, aiding in the mitigation of environmental pollution.Upon detection, offenders are recorded, and fines are levied, promoting accountability and discouraging further unlawful waste disposal practices.
+</p>
+    </div>
+    <div class = "w-[250px] h-[200px]">
+    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
+    AgniAlert instantly notifies nearby fire brigades upon detecting a fire outbreak through our advanced detection system.
+</p>
+    </div>
+  </div>
+</div>
+               </div>
+            </div>
+         </div>
+        
+    </>
+  )
+}
+
+export default Home
