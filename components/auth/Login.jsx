@@ -162,7 +162,7 @@ export default function Login() {
                               name=""
                               onChange={(event) => setPh(event.target.value)}
                               id=""
-                              defaultValue="+91 "
+                              defaultValue="+977 "
                               placeholder=" Enter your number"
                               class="block w-full py-4 pl-10 pr-7 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                             />
