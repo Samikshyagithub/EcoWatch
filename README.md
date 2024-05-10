@@ -1,4 +1,5 @@
 # Eco Watch
+[Watch Video: Problems that EcoWatch Solves](https://youtu.be/1dpnX1T6EYU)
 ![Eco Watch Logo](ecowatch.png)
 
 Eco Watch is an innovative project aimed at leveraging machine learning to enhance safety and cleanliness in public spaces. This project utilizes CCTV footage to detect fires, unauthorized trash disposal, and report accidents to the authorities.
