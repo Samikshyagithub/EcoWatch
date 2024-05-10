@@ -45,10 +45,10 @@ useEffect(() => {
 
 
   const initialValues = {
-    tittle: "Fire at household",
+    tittle: "Fire at Block 10",
     description: "home sesnor detected fire",
     intensity: "4",
-    location: { latitude: 12.9141, longitude: 74.8560},
+    location: { latitude: 27.619767, longitude: 85.538068},
     imageurl:"https://img.freepik.com/premium-vector/fire-flame-logo-vector-illustration-design-template-fire-red-flame-icon-white-background_340607-24.jpg",
     datetime: getCurrentDate(),
     policehelp: true,

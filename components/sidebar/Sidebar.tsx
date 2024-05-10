@@ -57,27 +57,7 @@ export default function Sidebaruser() {
           {/* <span className="ml-2 text-sm font-medium">Home</span> */}
         </Link>
 
-        <Link
-          className="flex items-center w-full h-12 py-9 justify-center mt-2 m-0 p-0   hover:text-red-600 hobver:bg-rose-100 text-gray-500 hover:border-l-4 rounded-l-xl border-red-600"
-          href="/list"
-        >
-          <svg
-            className=" w-7 h-7  stroke-current"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          >
-            <path
-              d="M4 21V19.5C4 16.4624 6.46243 14 9.5 14H14.5C17.5376 14 20 16.4624 20 19.5V21M8 21V18.5M16 21V18.3333M8.5 6.5C10.514 8.22631 13.486 8.22631 15.5 6.5M16 7V4.92755L17.4657 2.78205C17.6925 2.45018 17.4548 2 17.0529 2H6.94712C6.5452 2 6.30755 2.45018 6.53427 2.78205L8 4.92755V7M16 8C16 10.2091 14.2091 12 12 12C9.79086 12 8 10.2091 8 8V5.5H16V8Z"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.4"
-            />
-          </svg>
-          {/* <span className="ml-2 text-sm font-medium">Home</span> */}
-        </Link>
+
         
         <Link
           className="flex items-center w-full h-12 py-9 justify-center mt-2 m-0 p-0   hover:text-red-600 hobver:bg-rose-100 text-gray-500 hover:border-l-4 rounded-l-xl border-red-600"
