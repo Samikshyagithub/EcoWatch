@@ -81,7 +81,7 @@ export default function Sidebaruser() {
         
         <Link
           className="flex items-center w-full h-12 py-9 justify-center mt-2 m-0 p-0   hover:text-red-600 hobver:bg-rose-100 text-gray-500 hover:border-l-4 rounded-l-xl border-red-600"
-          href="/garbagecam"
+          href="http://192.168.76.157:3000"
         >
           <svg
             className=" w-7 h-7  stroke-current"
