@@ -5,20 +5,20 @@ import { app, database } from "../../config/firebase";
 
 
 export default function AccidentsDetails({ tittle, loc, time, status,id }) {
-      const ACCESS_TOKEN = 'pk.eyJ1IjoiYWxhcGFub3NraSIsImEiOiJjbGVxMjhjbmowaTZpNDVvNWQ4NTBsc2JtIn0.LFIPoIEmYQJv5bfRPueMQQ';
-  const geocoder = new MapboxGeocoder({
-      accessToken: ACCESS_TOKEN
-  });
+  //     const ACCESS_TOKEN = 'pk.eyJ1IjoiYWxhcGFub3NraSIsImEiOiJjbGVxMjhjbmowaTZpNDVvNWQ4NTBsc2JtIn0.LFIPoIEmYQJv5bfRPueMQQ';
+  // const geocoder = new MapboxGeocoder({
+  //     accessToken: ACCESS_TOKEN
+  // });
 
-  // Reverse geocode a set of coordinates
-  geocoder.reverseGeocode({
-      query: [-122.42, 37.78]
-  }).then(function(result) {
-      // Extract the location information from the response
-      const location = result.features[0].place_name;
-      console.log(location);
-      // Output: 1550 Bryant St, San Francisco, California 94103, United States
-  });
+  // // Reverse geocode a set of coordinates
+  // geocoder.reverseGeocode({
+  //     query: [-122.42, 37.78]
+  // }).then(function(result) {
+  //     // Extract the location information from the response
+  //     const location = result.features[0].place_name;
+  //     console.log(location);
+  //     // Output: 1550 Bryant St, San Francisco, California 94103, United States
+  // });
 
 
 
