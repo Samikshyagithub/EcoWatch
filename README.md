@@ -1,4 +1,6 @@
-# Eco Watch: Enhancing Safety and Cleanliness with Advanced AI
+# Eco Watch: Enhancing Safety and Cleanliness
+
+![Eco Watch Logo](ecowatch.png)
 
 Eco Watch stands as a beacon of technological innovation, intertwining the realms of machine learning and public safety to create a harmonious urban environment. Beyond mere surveillance, it orchestrates a symphony of vigilance and responsiveness, empowering communities to uphold the sanctity of their public spaces.
 
