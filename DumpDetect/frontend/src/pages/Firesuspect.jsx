@@ -23,7 +23,7 @@ function FireSuspect() {
         <Sidebar />
       </div>
     <div style={{ textAlign: "center" }}>
-  <h1 style={{ fontWeight: "bold", fontFamily: "Arial, sans-serif", textDecoration: "underline", marginTop:"50px" ,marginBottom: "50px",fontSize: "2.5em" }}>Fire Photos</h1>
+  <h1 style={{ fontWeight: "bold", fontFamily: "Arial, sans-serif", textDecoration: "underline", marginTop:"50px" ,marginBottom: "50px",fontSize: "2.5em" }}>Detected Fire Photos</h1>
   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "10px" }}>
     {imageUrls.map((imageUrl, index) => (
       <div key={index} style={{ width: "100%", height: "100%", overflow: "hidden", borderRadius: "8px" }}>

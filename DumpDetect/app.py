@@ -124,6 +124,11 @@ def predict2(video_path):
                     x1, y1, x2, y2 = int(x1),int(y1),int(x2),int(y2)
                     cv2.rectangle(frame,(x1,y1),(x2,y2),(0,0,255),5)
                     cvzone.putTextRect(frame, f'{class_list[Class]} {confidence}%', [x1 + 8, y1 + 100], scale=1.5,thickness=2)
+                    now=datetime.now()
+                    current_time = now.strftime("%H:%M:%S")
+                    font = cv2.FONT_HERSHEY_COMPLEX
+                    # cv2.putText(frame,"KU,Dhulikhel",(0,50),font,1,(255, 0, 0),2)
+                    cv2.putText(frame,current_time,(0,100),font,1,(255, 255, 255),2)
                     
                     now=datetime.now()
                     folder_name=now.strftime("%Y%m%d")
