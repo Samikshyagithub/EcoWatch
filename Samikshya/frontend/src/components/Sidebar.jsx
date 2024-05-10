@@ -5,6 +5,7 @@ import { BiHomeSmile, BiUserVoice, BiMessageSquareError } from 'react-icons/bi'
 import { GiCctvCamera } from 'react-icons/gi'
 import { Outlet, Link } from 'react-router-dom'
 import Logo from '../assets/logo3.png'
+import ecowatch from '../assets/ecowatch.png'
 
 const Sidebar = () => {
   const pathname = window.location.pathname
@@ -44,14 +45,15 @@ const Sidebar = () => {
   ]
   return (
     <>
-      <div className="flex flex-col justify-between w-full h-screen border-r-2 border-gray-300">
+      <div className="flex flex-col justify-between w-full h-full border-gray-300">
         <div>
           <div className='flex items-center'>
-            {/* <div><img src={Logo} alt="Logo" className='w-10 mx-3 border-2 border-black rounded-xl' /></div> */}
-            <div className='mx-3'><GiCctvCamera size={35} /></div>
-            <h1 className="flex items-center justify-center text-3xl font-bold h-28">
-              AgniAlert
-            </h1>
+            {
+              <div><img src={ecowatch} alt="Logo" className='w-15 h-20 mt-5 mb-5 ml-4 border-2 border-black rounded-xl' /></div> 
+              }
+            <div className='mx-3'><ecowatch size={35} /></div>
+            
+          
           </div>
           <ul>
             {arr.map(({ id, name, link, icon }) => (
@@ -71,12 +73,7 @@ const Sidebar = () => {
         </div>
         <div>
           <div className="flex justify-center w-full px-4 text-gray-600 cursor-pointer">
-            <div className="flex items-center w-56 my-1 border-t-2 border-gray-300 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark h-14">
-              <span className="px-4">
-                <BiMessageSquareError size={26} />
-              </span>{' '}
-              <span className="mx-2 text-base font-medium"> Report an issue</span>
-            </div>
+            
           </div>
         </div>
       </div>

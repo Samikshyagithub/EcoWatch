@@ -70,109 +70,112 @@ const Home = () => {
         </div>
         <div className="flex flex-col w-[82%]">
           <div className="flex items-center justify-between py-2 px-7">
-            <div>
-              <form action="">
-                <input
-                  type="text"
-                  id="small-input"
-                  className="py-4 px-7 w-[20rem] h-11 outline-none rounded-full border-2 border-gray-300 bg-gray-300"
-                  placeholder={`🔍  Search here`}
-                ></input>
-              </form>
-            </div>
+            
             
 
-            <div>
-              <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
-                <IoNotifications size={22} />
-              </button>
-              <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
-                <VscColorMode size={22} />
-              </button>
-              <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
-                <FaUserCircle size={22} />
-              </button>
-            </div>
-          </div>
+          <div className="ml-auto">
+        <div className="flex items-center justify-center">
+          <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
+            <IoNotifications size={22} />
+          </button>
+          <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
+            <VscColorMode size={22} />
+          </button>
+          <button className="p-2 m-2 bg-gray-100 rounded-full dark:bg-black">
+            <FaUserCircle size={22} />
+          </button>
+        </div>
+      </div>
+    </div>  
           
-              <h1 className="px-4 mt-3 py-0 text-2xl font-semibold">
+              <h1 className="px-4 mt-9 ml-6 py-0 text-2xl font-semibold ">
                 What are the problems?
               </h1>
               
-              < div className="flex flex-col p-4 mt-4 ml- bg-white shadow-xl rounded-3xl h-[45vh] w-[80vw]">
+              < div className="flex flex-col p-4 mt-5 ml-4  shadow-xl rounded-3xl h-[42vh] w-[75vw]">
                 <div className="flex">
                 <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Dadelu})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%', paddingBottom: '20%' }}>
                  <div className="flex items-start">
-                <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 ml-auto text-left">
-                   <h1 className='text-2x0.5 font-bold text-black'>Forest Fire</h1>
-  </div>
-</div>
+                </div>
                   </div>
                   <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${River})`, backgroundSize: 'cover', backgroundPosition: 'center',height: '80%' }}>
-                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 mt-0 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Water Pollution</h1>
-                 </div>
+                    
                  </div>
                   <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${fohor})`, backgroundSize: 'cover', backgroundPosition: 'center' , height: '80%'}}>
-                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Solid waste</h1>
-                 </div>
+                    
                  </div>
                   <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${House})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%' }}>
-                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-70 rounded-lg p-4 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Environmental Contamination</h1>
-                 </div>
+                    
                  </div>
                 </div>
+                <div class=" p-4 rounded-3xl h-[70vh] w-[75vw] mr-2 mt-3">
+    <div class="grid grid-cols-4 gap-4  text-black">
+    <div class = "w-[200px] h-[100px] pl-5">
+      <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-center">
+                    <h1 className='text-2x0.5 font-bold text-white'>Fire Detection</h1>
+                 </div>
+  
+    </div>
+    <div class = "w-[200px] h-[50px] pl-5 ">
+    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-center">
+                    <h1 className='text-2x0.5 font-bold text-white'>Fire Detection</h1>
+                 </div>
+    </div>
+    <div class = "w-[200px] h-[100px] pl-5">
+    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-center">
+                    <h1 className='text-2x0.5 font-bold text-white'>Fire Detection</h1>
+                 </div>
+    </div>
+    <div class = "w-[200px] h-[100px] pl-5">
+      <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-center">
+                    <h1 className='text-2x0.5 font-bold text-white'>Fire Detection</h1>
+                 </div>
+  
+    </div>
+  </div>
+</div>
 
              <h1 className="px-4 mt-3 py-0 text-2xl font-semibold">
-                What Agni Alert does?
+                What Eco Watch does?
               </h1>
               
-              < div className="flex flex-col p-1 mt-4 ml- bg-white shadow-xl rounded-3xl h-[40vh] w-[80vw]">
+              < div className="flex flex-col p-1 mt-4 ml- shadow-xl rounded-3xl h-[40vh] w-[75vw]">
                 <div className="flex">
                 <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Firefighter})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%', paddingBottom: '20%' }}>
-                 <div className="border border-gray-500 border-opacity-70 bg-gray-200 bg-opacity-50 rounded-lg p-4  text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Fire Detection</h1>
-                 </div>
                   </div>
-                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${ambulance})`, backgroundSize: 'cover', backgroundPosition: 'center',height: '80%' }}>
-                   <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Trash Detection</h1>
+                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${ambulance})`, backgroundSize: 'cover', backgroundPosition: 'center',height: '80%',paddingBottom: '20%' }}>
+                   
                  </div>
+                  < div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Garbage})`, backgroundSize: 'cover', backgroundPosition: 'center' , height: '80%', paddingBottom: '20%' }}>
+                   
                  </div>
-                  < div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${Garbage})`, backgroundSize: 'cover', backgroundPosition: 'center' , height: '80%'}}>
-                   <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Accident Reporting</h1>
-                 </div>
-                 </div>
-                  <div className="flex items-center flex-col rounded-xl p-5 w-2/3 m-2" style={{ backgroundImage: `url(${House})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '80%' }}>
-                    <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-left">
-                    <h1 className='text-2x0.5 font-bold text-black'>Fire detection</h1>
-                 </div>
-                 </div>
+                  
                 </div>
               </div>
-              <div class="bg-white p-4">
-  <div class="grid grid-cols-4 gap-4  text-black">
-    <div class = "w-[250px] h-[200px]">
-    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
+              <div class=" p-4 rounded-3xl h-[70vh] w-[75vw] mr-2 mt-3">
+  <div class="grid grid-cols-3 gap-4  text-black">
+    <div class = "w-[370px] h-[200px]">
+    <p class="text-base font-semibold leading-relaxed ml-7 mb-4  text-white text-center">
+      <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-center">
+                    <h1 className='text-2x0.5 font-bold text-white'>Fire Detection</h1>
+                 </div>
   The machine learning model for fire detection can be run on CCTV footage by providing the video feed as input. The model will analyze the footage and generate alerts when it detects a fire.
 </p>
     </div>
-    <div class = "w-[250px] h-[200px]">
-    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
-  The trash detection feature operates by analyzing video feeds from CCTV cameras. It identifies instances of unauthorized trash disposal and sends alerts to the appropriate authorities.
-</p>
-    </div>
-    <div class = "w-[250px] h-[200px]">
-    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
+    <div class = "w-[370px] h-[200px]">
+    <p class="text-base font-semibold leading-relaxed ml-7 mb-4  text-white text-center">
+      <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-center">
+                    <h1 className='text-2x0.5 font-bold text-white'>Accident Reporting</h1>
+                 </div>
  Users can upload photos of accidents via the Agni Alert web or mobile application. The system processes these images and forwards the reports to the relevant emergency services and local authorities.
 </p>
     </div>
-    <div class = "w-[250px] h-[200px]">
-    <p class="text-base font-light leading-relaxed mt-0 mb-4  text-black">
-    AgniAlert instantly notifies nearby fire brigades upon detecting a fire outbreak through our advanced detection system.
+    <div class = "w-[350px] h-[200px]">
+    <p class="text-base font-semibold leading-relaxed ml-7 mb-4  text-white text-center" >
+      <div className="border border-gray-500 border-opacity-50 bg-gray-200 bg-opacity-50 rounded-lg p-4 text-center">
+                    <h1 className='text-2x0.5 font-bold text-white'>Trash Detection</h1>
+                 </div>
+ The trash detection feature operates by analyzing video feeds from CCTV cameras. It identifies instances of unauthorized trash disposal and sends alerts to the appropriate authorities.
 </p>
     </div>
   </div>
