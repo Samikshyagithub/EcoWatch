@@ -14,7 +14,7 @@ import psycopg2
 import os
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, request
+from flask import Flask, request,send_from_directory
 from flask_mail import Mail, Message
 import base64
 from google.oauth2.credentials import Credentials
@@ -24,8 +24,10 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import math
 import cvzone
+from flask_cors import CORS
 app = Flask(__name__)
 
+CORS(app, origins='http://localhost:3000')
 
 def create_message_with_attachment(sender, to, subject, message_text, file_path):
 
@@ -122,10 +124,16 @@ def predict2(video_path):
                     x1, y1, x2, y2 = int(x1),int(y1),int(x2),int(y2)
                     cv2.rectangle(frame,(x1,y1),(x2,y2),(0,0,255),5)
                     cvzone.putTextRect(frame, f'{class_list[Class]} {confidence}%', [x1 + 8, y1 + 100], scale=1.5,thickness=2)
+                    now=datetime.now()
+                    current_time = now.strftime("%H:%M:%S")
+                    font = cv2.FONT_HERSHEY_COMPLEX
+                    # cv2.putText(frame,"KU,Dhulikhel",(0,50),font,1,(255, 0, 0),2)
+                    cv2.putText(frame,current_time,(0,100),font,1,(255, 255, 255),2)
                     
                     now=datetime.now()
-                    file_name = now.strftime("%Y%m%d_%H%M%S")
-                    firedetect_folder = 'firedetect'
+                    folder_name=now.strftime("%Y%m%d")
+                    file_name = now.strftime("%H%M%S")
+                    firedetect_folder = f'firedetect\{folder_name}'
                     if not os.path.isdir(firedetect_folder):
                         os.mkdir(firedetect_folder)
                     firedetect_path = os.path.join(firedetect_folder, f"{file_name}.jpg")
@@ -137,7 +145,7 @@ def predict2(video_path):
                         
                         # Insert filename into table
                         cur = conn.cursor()
-                        cur.execute(f"INSERT INTO fire(filename) VALUES ('{file_name}.jpg')")
+                        cur.execute(f"INSERT INTO fire(filename) VALUES ('firedetect/{file_name}.jpg')")
                         conn.commit()
                         
                         # Play alert sound
@@ -148,7 +156,7 @@ def predict2(video_path):
                         # Stop processing the video
                         cap.release()
                         cv2.destroyAllWindows()
-                        return
+                        return 
                     else:
                         # Firedetect_path already exists, skip saving image
                         print(f"Image {firedetect_path} already exists. Skipping saving.")
@@ -175,7 +183,7 @@ def predict1(video_path):
     my_file.close()
 
     
-    
+    attachpath = None
     # Generate random colors for class list
     detection_colors = []
     for i in range(len(class_list)):
@@ -262,7 +270,7 @@ def predict1(video_path):
 
             
             for i in range(len(detect_params[0])):
-                print(i)
+                # print(i)
 
                 boxes = detect_params[0].boxes
                 box = boxes[i]  # returns one box
@@ -285,10 +293,10 @@ def predict1(video_path):
                         carry_flag=1
                 
                 if class_list[int(clsID)]=="thrownwaste":
-                        print("Start")
-                        print(carry_record)
-                        print(f"Counter:{counter} | Obj_count= {obj_count}")
-                        print("End")
+                        # print("Start")
+                        # print(carry_record)
+                        # print(f"Counter:{counter} | Obj_count= {obj_count}")
+                        # print("End")
                         if carry_record[-2]==1 and counter<obj_count:
                             counter=counter+1
                             now = datetime.now()
@@ -296,14 +304,18 @@ def predict1(video_path):
                             # format the time as a string
                             file_name = now.strftime("%H%M%S")
                             folder_name = now.strftime("%Y%m%d")
+                            attachpath=f"suspects/{folder_name}/{file_name}.jpg"
+                            print(file_name,folder_name,attachpath,attachpath)
                             if not os.path.isdir('suspects/'+folder_name):
                                 os.mkdir('suspects/'+folder_name)
-                            cv2.imwrite(f"suspects/{folder_name}/{file_name}.jpg",frame)
-                            attachpath=f"suspects/{folder_name}/{file_name}.jpg"
-                            send_email_with_attachment("adamfirstman22@gmail.com", "abiraladhikari1222@gmail.com", "Garbage Dump Alert", "Somebody is dumping Garbage in your yard", attachpath, credentials_path='credentials.json')
+                            print(attachpath)
+                            cv2.imwrite(attachpath,frame)
+                            
+                            # print(attachpath)
+                            # send_email_with_attachment("adamfirstman22@gmail.com", "abiraladhikari1222@gmail.com", "Garbage Dump Alert", "Somebody is dumping Garbage in your yard", attachpath, credentials_path='credentials.json')
                             cur = conn.cursor()
                             
-                            cur.execute(f"INSERT INTO sessions(filename) VALUES ('{folder_name}/{file_name}.jpg')")
+                            cur.execute(f"INSERT INTO sessions(filename) VALUES ('suspects/{folder_name}/{file_name}.jpg')")
                             conn.commit()
 
                             mixer.init() 
@@ -331,7 +343,6 @@ def predict1(video_path):
         #Return response
         ret,buffer=cv2.imencode('.jpg',frame)
         frame=buffer.tobytes()
-
         yield(b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
     # When everything done, release the capture
@@ -345,8 +356,61 @@ def predict1(video_path):
 def video(input_url):
     url= request.view_args['input_url']
     print(url)
+    predict1(url)
+    # return send_from_directory('static',imagepath)
     return Response(predict1(url),mimetype='multipart/x-mixed-replace; boundary=frame')
 
+
+@app.route('/getsuspects', methods=["GET"])
+def get_all_suspects():
+    folder_path = "suspects/20240510"
+
+    # Get a list of all image files in the folder
+    image_files = [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+
+    # List to store image URLs
+    image_urls = []
+
+    # Iterate through image files and collect their URLs
+    for image_file in image_files:
+        image_url = f"http://127.0.0.1:5000/get_image/{image_file}"  # URL to retrieve the image
+        image_urls.append(image_url)
+
+    # Return image URLs as JSON
+    return {"image_urls": image_urls}
+
+@app.route('/getfire', methods=["GET"])
+def get_all_fireinstance():
+    folder_path = "firedetect/20240510"
+
+    # Get a list of all image files in the folder
+    image_files = [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+
+    # List to store image URLs
+    image_urls = []
+
+    # Iterate through image files and collect their URLs
+    for image_file in image_files:
+        image_url = f"http://127.0.0.1:5000/get_fireimage/{image_file}"  # URL to retrieve the image
+        image_urls.append(image_url)
+
+    # Return image URLs as JSON
+    return {"image_urls": image_urls}
+
+@app.route('/get_fireimage/<path:image_filename>')
+def get_fireimage(image_filename):
+    folder_path = "firedetect/20240510"
+    # Return the requested image file
+    return send_from_directory(folder_path, image_filename)
+    
+@app.route('/get_image/<path:image_filename>')
+def get_image(image_filename):
+    folder_path = "suspects/20240510"
+    # Return the requested image file
+    return send_from_directory(folder_path, image_filename)
+    
+
+    
 @app.route('/firetest/<path:fire>',methods=['GET'],endpoint='fire_test_endpoint')
 def video(fire):
     fire_url= request.view_args['fire']
@@ -432,7 +496,10 @@ def firedetect():
         conn.close()
 
         # return the results as JSON
-        return jsonify(results)
+        results=jsonify(results)
+        print(results)
+        return results
+    
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
