@@ -1,7 +1,7 @@
 import "./components/fileup";
 import Home from "./pages/Home";
 import Tool from "./pages/Tool";
-import Suspects from "./pages/Suspects";
+import Suspects from "./pages/suspects";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import FireDetection from "./pages/Firedetection";
 
