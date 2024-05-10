@@ -56,4 +56,4 @@ We welcome contributions from the community to enhance Eco Watch's functionality
 Eco Watch stands as a testament to the indomitable spirit of innovation, transcending boundaries and forging a brighter tomorrow. With its elegant design and unparalleled functionality, it heralds a paradigm shift in urban governance, empowering communities to reclaim their public spaces and nurture a legacy of safety and sustainability.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
